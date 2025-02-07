@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_print_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/07 19:59:46 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/02/07 19:59:47 by ysumeral         ###   ########.fr       */
+/*   Created: 2024/11/18 14:52:44 by ysumeral          #+#    #+#             */
+/*   Updated: 2025/02/07 18:28:48 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../../include/ft_printf.h"
 
-int	error_handler(char *error)
+int	ft_print_ptr(void *ptr)
 {
-	if (error)
-		ft_putstr_fd(error, 2);
-	return (1);
+	int				counter;
+	unsigned long	n;
+
+	counter = 0;
+	n = (unsigned long) ptr;
+	if (!ptr)
+		return (ft_print_str("(nil)"));
+	counter += ft_print_str("0x");
+	counter += ft_print_base(n, "0123456789abcdef");
+	return (counter);
 }

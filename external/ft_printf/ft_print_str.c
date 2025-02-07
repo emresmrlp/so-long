@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_print_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/07 19:59:46 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/02/07 19:59:47 by ysumeral         ###   ########.fr       */
+/*   Created: 2024/11/18 13:09:26 by ysumeral          #+#    #+#             */
+/*   Updated: 2025/02/07 18:28:50 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../../include/ft_printf.h"
 
-int	error_handler(char *error)
+int	ft_print_str(char *str)
 {
-	if (error)
-		ft_putstr_fd(error, 2);
-	return (1);
+	int	counter;
+
+	counter = 0;
+	if (str == NULL)
+		return (ft_print_str("(null)"));
+	while (*str)
+	{
+		counter += ft_print_chr(*str);
+		str++;
+	}
+	return (counter);
 }

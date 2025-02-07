@@ -5,27 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/31 18:42:50 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/01/31 18:43:07 by ysumeral         ###   ########.fr       */
+/*   Created: 2025/02/07 19:20:15 by ysumeral          #+#    #+#             */
+/*   Updated: 2025/02/07 19:20:49 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/map.h"
-#include "../include/error.h"
-#include "../include/game.h"
-#include "../include/get_next_line.h"
+#include "../include/so_long.h"
 #include <fcntl.h>
-
-// COUNT MAP FILEFUNCTION ->	Dosyayı satır satır okur ve counter variablei
-//								oluşturur. Alınan fonksiyona göre değişen counter
-//								gönderir.
-// -> WIDTH fonksiyonu ->		New line kontrolü yapar bu sayede get next line
-//								\n döndürdüyse bile doğru hesap yapar.
-//								alınan değer pointer olmak zorunda adresi çünkü
-//								counter ile çalışan ana fonksiyonun yardımcı
-//								fonksiyonu olarak kullanıyorum.
-// -> HIEGHT fonksiyonu ->		Zaten halihazırda satır saydığı için bu
-//								yardımcı fonksiyon sadece counteri arttırır.
 
 int	count_width(int *counter, char *line)
 {

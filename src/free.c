@@ -5,46 +5,77 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/31 18:41:55 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/01/31 18:42:18 by ysumeral         ###   ########.fr       */
+/*   Created: 2025/02/07 19:55:29 by ysumeral          #+#    #+#             */
+/*   Updated: 2025/02/07 20:01:55 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/game.h"
-#include "../include/map.h"
-#include "../include/free.h"
+#include "../include/so_long.h"
 
-void	free_game(t_game *game)
+static void	free_map(t_data *data)
 {
-	if (game)
+	if (data->map.map)
 	{
-		if (game->mlx)
-			free(game->mlx);
-		free(game);
-	}
-}
-
-void	free_map(t_map *map)
-{
-	if (map)
-	{
-		if (map->map)
+		while (data->map.map[data->map.size_y--])
 		{
-			while (map->size_y--)
+			if (data->map.map[data->map.size_y])
 			{
-				free(map->map[map->size_y]);
-				map->map[map->size_y] = NULL;
+				free(data->map.map[data->map.size_y]);
+				data->map.map[data->map.size_y] = NULL;
 			}
-			free(map->map);
-			map->map = NULL;
 		}
-		free(map);
-		map = NULL;
+		free(data->map.map);
+		data->map.map = NULL;
 	}
 }
 
-void	free_all(t_game *game, t_map *map)
+static void	free_collectibles(t_data *data)
 {
-	free_game(game);
-	free_map(map);
+	int	i;
+
+	i = 0;
+	if (data->entity.coll)
+	{
+		while (i < data->map.c_count)
+		{
+			if (data->entity.coll[i])
+			{
+				free(data->entity.coll[i]);
+				data->entity.coll[i] = NULL;
+			}
+			i++;
+		}
+		free(data->entity.coll);
+		data->entity.coll = NULL;
+	}
+}
+
+void	free_copy_map(t_data *data)
+{
+	if (data->map.copy)
+	{
+		while (data->map.copy[data->map.size_y--])
+		{
+			if (data->map.copy[data->map.size_y])
+			{
+				free(data->map.copy[data->map.size_y]);
+				data->map.copy[data->map.size_y] = NULL;
+			}
+		}
+		free(data->map.copy);
+		data->map.copy = NULL;
+	}
+}
+
+int	free_all(t_data *data)
+{
+	if (data)
+	{
+		free_map(data);
+		free_copy_map(data);
+		free_collectibles(data);
+		free(data);
+		data = NULL;
+	}
+	return (1);
 }

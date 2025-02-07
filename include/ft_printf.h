@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/07 19:59:46 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/02/07 19:59:47 by ysumeral         ###   ########.fr       */
+/*   Created: 2024/11/18 13:07:24 by ysumeral          #+#    #+#             */
+/*   Updated: 2025/02/07 20:05:02 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
+# include <stdarg.h>
+# include <unistd.h>
 
-int	error_handler(char *error)
-{
-	if (error)
-		ft_putstr_fd(error, 2);
-	return (1);
-}
+int	ft_printf(const char *str, ...);
+int	ft_print_base(unsigned long n, char *base);
+int	ft_print_chr(int c);
+int	ft_print_str(char *str);
+int	ft_print_ptr(void *ptr);
+int	ft_print_int(int num);
+int	ft_print_uns(unsigned int uns);
+int	ft_print_hex(unsigned int uns, int caps);
+
+#endif

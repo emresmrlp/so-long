@@ -5,58 +5,62 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/31 18:43:23 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/01/31 19:12:30 by ysumeral         ###   ########.fr       */
+/*   Created: 2025/02/07 19:23:53 by ysumeral          #+#    #+#             */
+/*   Updated: 2025/02/07 20:02:01 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/map.h"
+#include "../include/so_long.h"
 #include "../include/error.h"
-#include "../include/libft.h"
-#include "../include/game.h"
-#include "../include/init.h"
-#include "../include/free.h"
-#include <fcntl.h>
 
-static int	init_window(t_game *game, t_map *map);
-
-static int	init_map(t_game *game, t_map *map, char *map_path);
-
-int	init_game(t_game *game, t_map *map, char *map_path)
+int	init_window(t_data *data)
 {
-	if (init_map(game, map, map_path))
+	data->mlx = mlx_init();
+	if (!data->mlx)
+		return (error_handler(ERROR_MINILIBX_INIT));
+	data->win = mlx_new_window(data->mlx, data->map.size_x * 64,
+			data->map.size_y * 64, "so_long");
+	if (!data->win)
+		return (error_handler(ERROR_WINDOW_INIT));
+	parse_keys(data);
+	return (0);
+}
+
+int	init_textures(t_data *data)
+{
+	parse_map_textures(data);
+	parse_player_textures(data);
+	return (0);
+}
+
+int	init_map(t_data *data, char *map_path)
+{
+	if (check_file_valid_path(map_path))
 		return (1);
-	if (init_window(game, map))
+	if (parse_map(data, map_path))
+		return (1);
+	if (check_map(data))
 		return (1);
 	return (0);
 }
 
-static int	init_window(t_game *game, t_map *map)
+int	init_entities(t_data *data)
 {
-	game->mlx = mlx_init();
-	if (!game->mlx)
-		return (error_handler(ERROR_MINILIBX_INIT, game, map));
-	game->win = mlx_new_window(game->mlx, map->size_x * 32,
-			map->size_y * 32, "so_long");
-	if (!game->win)
-		return (error_handler(ERROR_WINDOW_INIT, game, map));
-	mlx_loop(game->mlx);
-	return (0);
-}
+	int	i;
 
-static int	init_map(t_game *game, t_map *map, char *map_path)
-{
-	if (has_valid_path(map_path))
-		return (error_handler(ERROR_INVALID_FILE, game, map));
-	if (parse_map(map, map_path))
-	{
-		free_game(game);
+	mlx_put_image_to_window(data->mlx, data->win, data->image.player_left,
+		data->entity.player_x * 64, data->entity.player_y * 64);
+	mlx_put_image_to_window(data->mlx, data->win, data->image.exit,
+		data->entity.exit_x * 64, data->entity.exit_y * 64);
+	if (parse_collectibles(data))
 		return (1);
-	}
-	if (check_map(map))
+	i = 0;
+	while (i < data->map.c_count)
 	{
-		free_game(game);
-		return (1);
+		mlx_put_image_to_window(data->mlx, data->win, data->image.collectible,
+			data->entity.coll[i][0] * 64,
+			data->entity.coll[i][1] * 64);
+		i++;
 	}
 	return (0);
 }

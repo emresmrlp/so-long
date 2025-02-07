@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.h                                             :+:      :+:    :+:   */
+/*   ft_print_base.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/31 18:46:58 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/01/31 19:02:41 by ysumeral         ###   ########.fr       */
+/*   Created: 2024/11/18 15:00:53 by ysumeral          #+#    #+#             */
+/*   Updated: 2025/02/07 18:28:38 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FREE_H
-# define FREE_H
-# include "game.h"
-# include "map.h"
-# include <stdlib.h>
+#include "../../include/ft_printf.h"
 
-void	free_all(t_game *game, t_map *map);
-void	free_game(t_game *game);
-void	free_map(t_map *map);
+int	ft_print_base(unsigned long n, char *base)
+{
+	int	counter;
 
-#endif
+	counter = 0;
+	if (n >= 16)
+	{
+		counter += ft_print_base(n / 16, base);
+	}
+	counter += ft_print_chr(base[n % 16]);
+	return (counter);
+}

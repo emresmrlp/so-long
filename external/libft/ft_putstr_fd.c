@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
+/*   By: ysumeral < ysumeral@student.42istanbul.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/11 01:20:43 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/01/31 19:03:34 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/02/02 16:14:45 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

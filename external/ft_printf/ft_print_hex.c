@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_print_hex.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/07 19:59:46 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/02/07 19:59:47 by ysumeral         ###   ########.fr       */
+/*   Created: 2024/11/18 15:44:32 by ysumeral          #+#    #+#             */
+/*   Updated: 2025/02/07 18:28:43 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/so_long.h"
+#include "../../include/ft_printf.h"
 
-int	error_handler(char *error)
+int	ft_print_hex(unsigned int uns, int caps)
 {
-	if (error)
-		ft_putstr_fd(error, 2);
-	return (1);
+	char	*base;
+	int		counter;
+
+	counter = 0;
+	if (caps == 0)
+		base = "0123456789abcdef";
+	else
+		base = "0123456789ABCDEF";
+	counter += ft_print_base(uns, base);
+	return (counter);
 }

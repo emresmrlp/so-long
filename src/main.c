@@ -5,31 +5,57 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/25 08:35:51 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/01/31 17:30:02 by ysumeral         ###   ########.fr       */
+/*   Created: 2025/02/07 19:21:30 by ysumeral          #+#    #+#             */
+/*   Updated: 2025/02/07 20:02:09 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/game.h"
-#include "../include/libft.h"
+#include "../include/so_long.h"
 #include "../include/error.h"
-#include "../include/map.h"
-#include "../include/init.h"
+
+static void	init(t_data *data)
+{
+	data->map.size_x = 0;
+	data->map.size_y = 0;
+	data->map.p_count = 0;
+	data->map.c_count = 0;
+	data->map.collected_c_count = 0;
+	data->map.x_count = 0;
+	data->entity.exit_x = 0;
+	data->entity.exit_y = 0;
+	data->entity.coll = NULL;
+	data->entity.player_x = 0;
+	data->entity.player_y = 0;
+	data->entity.player_moves = 0;
+	data->map.map = NULL;
+	data->map.copy = NULL;
+	data->image.img_height = 64;
+	data->image.img_width = 64;
+}
 
 int	main(int ac, char **av)
 {
-	t_game	*game;
-	t_map	*map;
+	t_data	*data;
 
 	if (ac != 2)
-		return (error_handler(ERROR_INVALID_ARG, NULL, NULL));
-	game = (t_game *)ft_calloc(1, sizeof(t_game));
-	if (!game)
-		return (error_handler(ERROR_GAME_ALLOCATION, game, NULL));
-	map = (t_map *)ft_calloc(1, sizeof(t_map));
-	if (!map)
-		return (error_handler(ERROR_MAP_ALLOCATION, game, map));
-	if (init_game(game, map, av[1]))
-		return (1);
+		return (error_handler(ERROR_INVALID_ARG));
+	data = (t_data *)ft_calloc(1, sizeof(t_data));
+	if (!data)
+		return (error_handler(ERROR_GAME_ALLOCATION));
+	init(data);
+	if (init_map(data, av[1]))
+		return (free_all(data));
+	if (init_window(data))
+		return (free_all(data));
+	if (check_valid_path(data))
+		return (free_all(data));
+	printf("path validated\n");
+	if (init_textures(data))
+		return (free_all(data));
+	put_background(data);
+	if (init_entities(data))
+		return (free_all(data));
+	mlx_loop(data->mlx);
+	free_all(data);
 	return (0);
 }

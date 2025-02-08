@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 19:56:27 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/02/07 20:09:24 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/02/08 15:21:29 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	path_checker(t_data *data)
 		x = 0;
 		while (x < data->map.size_x)
 		{
-			if (data->map.copy[y][x] == 'E' || data->map.copy[y][x] == 'C')
+			if (data->map.copy[y][x] == 'X' || data->map.copy[y][x] == 'C')
 				return (error_handler(ERROR_MAP_NO_VALID_PATH));
 			x++;
 		}

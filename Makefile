@@ -6,7 +6,7 @@
 #    By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/07 20:08:12 by ysumeral          #+#    #+#              #
-#    Updated: 2025/02/07 20:08:13 by ysumeral         ###   ########.fr        #
+#    Updated: 2025/02/08 14:54:50 by ysumeral         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,8 @@ LIB_DIR = ./external/libft
 GNL_DIR = ./external/get_next_line
 INC_DIR = ./include
 PRINTF_LIB = ./external/ft_printf/libftprintf.a
-MLX = -L${MLX_DIR} -lmlx -framework OpenGL -framework AppKit
-#LINUX: MLX = -L$(MLX_DIR) -lmlx -lX11 -lXext
+# MAC: MLX = -L${MLX_DIR} -lmlx -framework OpenGL -framework AppKit
+MLX = -L$(MLX_DIR) -lmlx -lX11 -lXext
 
 SRC =   $(SRC_DIR)/main.c \
 		$(SRC_DIR)/error.c \
@@ -49,7 +49,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	make -C ./external/ft_printf
 	make -C $(MLX_DIR)
-	$(CC) $(CFLAGS) ${PRINTF_LIB} -o $(NAME) $(OBJ) $(MLX)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) ${PRINTF_LIB} $(MLX)
 
 $(SRC_DIR)/main.o: $(SRC_DIR)/main.c
 	$(CC) $(CFLAGS) -I$(INC_DIR) -c $(SRC_DIR)/main.c -o $(SRC_DIR)/main.o

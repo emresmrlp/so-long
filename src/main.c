@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 19:21:30 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/02/07 20:02:09 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/02/08 14:52:42 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ int	main(int ac, char **av)
 		return (free_all(data));
 	if (check_valid_path(data))
 		return (free_all(data));
-	printf("path validated\n");
 	if (init_textures(data))
 		return (free_all(data));
 	put_background(data);

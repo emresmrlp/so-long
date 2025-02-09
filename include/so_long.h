@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:04:52 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/02/07 20:07:50 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/02/09 11:48:02 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_image
 	void	*wall;
 	void	*floor;
 	void	*exit;
+	void	*exit_player;
 	void	*collectible;
 	void	*player_up;
 	void	*player_down;
@@ -65,7 +66,7 @@ typedef struct s_data
 
 void	parse_keys(t_data *data);
 int		parse_collectibles(t_data *data);
-void	put_background(t_data *data);
+void	fill_background(t_data *data);
 int		check_valid_path(t_data *data);
 int		free_all(t_data *data);
 void	free_copy_map(t_data *data);
@@ -85,6 +86,7 @@ int		check_map(t_data *data);
 int		check_file_valid_path(char *map_path);
 int		parse_map_textures(t_data *data);
 int		parse_player_textures(t_data *data);
+int		parse_extra_textures(t_data *data);
 int		parse_map(t_data *data, const char *map_path);
 
 #endif

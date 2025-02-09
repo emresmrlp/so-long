@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 19:24:29 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/02/07 19:53:32 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/02/09 11:05:05 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,16 @@ int	parse_map_textures(t_data *data)
 	return (0);
 }
 
+int	parse_extra_textures(t_data *data)
+{
+	data->image.exit_player = mlx_xpm_file_to_image(data->mlx,
+			"./textures/exit_player.xpm",
+			&data->image.img_width, &data->image.img_height);
+	if (!data->image.exit_player)
+		return (error_handler(ERROR_TEXTURE_INIT));
+	return (0);
+}
+
 int	parse_player_textures(t_data *data)
 {
 	data->image.player_down = mlx_xpm_file_to_image(data->mlx,
@@ -63,7 +73,7 @@ int	parse_player_textures(t_data *data)
 	return (0);
 }
 
-void	put_background(t_data *data)
+void	fill_background(t_data *data)
 {
 	int	y;
 	int	x;

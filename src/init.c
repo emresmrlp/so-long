@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 19:23:53 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/02/07 20:02:01 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/02/09 10:50:43 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	init_textures(t_data *data)
 {
 	parse_map_textures(data);
 	parse_player_textures(data);
+	parse_extra_textures(data);
 	return (0);
 }
 

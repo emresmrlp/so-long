@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 19:23:45 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/02/08 14:53:14 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/02/09 11:49:19 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 
 int	click_hook(t_data *data)
 {
+	ft_printf("--------------------------------------------------\n");
+	ft_printf("\n");
+	ft_printf("(-_-) You exited the game.\n");
+	ft_printf("You moved %d times before leave...\n", data->entity.player_moves);
+	ft_printf("\n");
+	ft_printf("--------------------------------------------------\n");
 	mlx_destroy_window(data->mlx, data->win);
 	exit(0);
 	return (1);
@@ -22,23 +28,15 @@ int	click_hook(t_data *data)
 
 int	key_hook(int key, t_data *data)
 {
-	/* MACOS
-	if (key == 53)
-	{
-		mlx_destroy_window(data->mlx, data->win);
-		exit(0);
-		return (1);
-	}
-	if (key == 13 || key == 126)
-		move_up(data);
-	if (key == 0 || key == 123)
-		move_left(data);
-	if (key == 1 || key == 125)
-		move_down(data);
-	if (key == 2 || key == 124)
-		move_right(data);*/
 	if (key == 65307)
 	{
+		ft_printf("--------------------------------------------------\n");
+		ft_printf("\n");
+		ft_printf("(-_-) You exited the game.\n");
+		ft_printf("You moved %d times before leave...\n",
+			data->entity.player_moves);
+		ft_printf("\n");
+		ft_printf("--------------------------------------------------\n");
 		mlx_destroy_window(data->mlx, data->win);
 		exit(0);
 		return (1);

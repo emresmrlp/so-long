@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 19:55:29 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/02/07 20:01:55 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/02/09 11:40:42 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,17 @@
 
 static void	free_map(t_data *data)
 {
+	int	i;
+
+	i = data->map.size_y;
 	if (data->map.map)
 	{
-		while (data->map.map[data->map.size_y--])
+		while (i--)
 		{
-			if (data->map.map[data->map.size_y])
+			if (data->map.map[i])
 			{
-				free(data->map.map[data->map.size_y]);
-				data->map.map[data->map.size_y] = NULL;
+				free(data->map.map[i]);
+				data->map.map[i] = NULL;
 			}
 		}
 		free(data->map.map);
@@ -52,14 +55,17 @@ static void	free_collectibles(t_data *data)
 
 void	free_copy_map(t_data *data)
 {
+	int	i;
+
+	i = data->map.size_y;
 	if (data->map.copy)
 	{
-		while (data->map.copy[data->map.size_y--])
+		while (i--)
 		{
-			if (data->map.copy[data->map.size_y])
+			if (data->map.copy[i])
 			{
-				free(data->map.copy[data->map.size_y]);
-				data->map.copy[data->map.size_y] = NULL;
+				free(data->map.copy[i]);
+				data->map.copy[i] = NULL;
 			}
 		}
 		free(data->map.copy);

@@ -6,7 +6,7 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 19:23:53 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/02/09 10:50:43 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/02/09 12:16:09 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	init_entities(t_data *data)
 {
 	int	i;
 
-	mlx_put_image_to_window(data->mlx, data->win, data->image.player_left,
+	mlx_put_image_to_window(data->mlx, data->win, data->image.player_down,
 		data->entity.player_x * 64, data->entity.player_y * 64);
 	mlx_put_image_to_window(data->mlx, data->win, data->image.exit,
 		data->entity.exit_x * 64, data->entity.exit_y * 64);

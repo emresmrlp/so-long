@@ -1,6 +1,6 @@
 # 42 Türkiye / SO_LONG
 
-- This 2D game has been developed using the minilibx library, where the goal is to collect all the points, avoid enemies, and reach the exit.
+- This 2D game has been developed using the minilibx library, where the goal is to collect all the points, avoid enemies.
 
 ```
 ./so_long ./maps/istanbul.ber

@@ -6,11 +6,11 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 20:25:45 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/01/31 19:03:46 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/02/22 20:05:24 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "libft.h"
 
 void	*ft_calloc(int count, int size)
 {

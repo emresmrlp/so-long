@@ -6,11 +6,11 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:57:10 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/02/07 18:28:57 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/02/22 16:45:26 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/ft_printf.h"
+#include "ft_printf.h"
 
 static int	ft_check_format(char c, va_list *args)
 {

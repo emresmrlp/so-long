@@ -6,11 +6,11 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 13:27:11 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/02/07 18:28:45 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/02/22 16:45:44 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/ft_printf.h"
+#include "ft_printf.h"
 
 int	ft_print_int(int num)
 {

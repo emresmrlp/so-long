@@ -6,11 +6,11 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 21:01:32 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/01/31 13:30:15 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/02/22 20:06:40 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/get_next_line.h"
+#include "get_next_line.h"
 
 static char	*ft_read_leftover(int fd, char *leftover)
 {

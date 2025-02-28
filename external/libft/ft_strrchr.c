@@ -6,11 +6,11 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/10 13:14:03 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/01/31 19:03:27 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/02/22 20:04:22 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "libft.h"
 
 char	*ft_strrchr(char *s, int c)
 {

@@ -6,34 +6,36 @@
 #    By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/07 20:08:12 by ysumeral          #+#    #+#              #
-#    Updated: 2025/02/08 14:54:50 by ysumeral         ###   ########.fr        #
+#    Updated: 2025/02/27 19:10:20 by ysumeral         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-MLX_DIR = ./external/mlx
 SRC_DIR = ./src
+MLX_DIR = ./external/mlx
 LIB_DIR = ./external/libft
 GNL_DIR = ./external/get_next_line
 INC_DIR = ./include
 PRINTF_LIB = ./external/ft_printf/libftprintf.a
-# MAC: MLX = -L${MLX_DIR} -lmlx -framework OpenGL -framework AppKit
 MLX = -L$(MLX_DIR) -lmlx -lX11 -lXext
-
-SRC =   $(SRC_DIR)/main.c \
-		$(SRC_DIR)/error.c \
-		$(SRC_DIR)/free.c \
-		$(SRC_DIR)/move.c \
-		$(SRC_DIR)/flood_fill.c \
-		$(SRC_DIR)/entities.c \
-		$(SRC_DIR)/map.c \
-		$(SRC_DIR)/map_size.c \
-		$(SRC_DIR)/map_parser.c \
-		$(SRC_DIR)/key_hook.c \
-		$(SRC_DIR)/init.c \
-		$(SRC_DIR)/image.c \
+SRC =	$(SRC_DIR)/main.c \
+		$(SRC_DIR)/error_handler.c \
+		$(SRC_DIR)/memory_free.c \
+		$(SRC_DIR)/player_movement.c \
+		$(SRC_DIR)/map_handler.c \
+		$(SRC_DIR)/map_loader.c \
+		$(SRC_DIR)/map_util.c \
+		$(SRC_DIR)/map_validator.c \
+		$(SRC_DIR)/input_handler.c \
+		$(SRC_DIR)/image_handler.c \
+		$(SRC_DIR)/image_loader.c \
+		$(SRC_DIR)/game_state.c \
+		$(SRC_DIR)/game_init.c \
+		$(SRC_DIR)/collectible_handler.c \
+		$(SRC_DIR)/entity_loader.c \
 		$(LIB_DIR)/ft_calloc.c \
+		$(LIB_DIR)/ft_strdup.c \
 		$(LIB_DIR)/ft_strlcpy.c \
 		$(LIB_DIR)/ft_putstr_fd.c \
 		$(LIB_DIR)/ft_strncmp.c \
@@ -49,67 +51,7 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	make -C ./external/ft_printf
 	make -C $(MLX_DIR)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) ${PRINTF_LIB} $(MLX)
-
-$(SRC_DIR)/main.o: $(SRC_DIR)/main.c
-	$(CC) $(CFLAGS) -I$(INC_DIR) -c $(SRC_DIR)/main.c -o $(SRC_DIR)/main.o
-
-$(SRC_DIR)/free.o: $(SRC_DIR)/free.c
-	$(CC) $(CFLAGS) -I$(INC_DIR) -c $(SRC_DIR)/free.c -o $(SRC_DIR)/free.o
-
-$(SRC_DIR)/flood_fill.o: $(SRC_DIR)/flood_fill.c
-	$(CC) $(CFLAGS) -I$(INC_DIR) -c $(SRC_DIR)/flood_fill.c -o $(SRC_DIR)/flood_fill.o
-
-$(SRC_DIR)/error.o: $(SRC_DIR)/error.c
-	$(CC) $(CFLAGS) -I$(INC_DIR) -c $(SRC_DIR)/error.c -o $(SRC_DIR)/error.o
-
-$(SRC_DIR)/move.o: $(SRC_DIR)/move.c
-	$(CC) $(CFLAGS) -I$(INC_DIR) -c $(SRC_DIR)/move.c -o $(SRC_DIR)/move.o
-
-$(SRC_DIR)/entities.o: $(SRC_DIR)/entities.c
-	$(CC) $(CFLAGS) -I$(INC_DIR) -c $(SRC_DIR)/entities.c -o $(SRC_DIR)/entities.o
-
-$(SRC_DIR)/map.o: $(SRC_DIR)/map.c
-	$(CC) $(CFLAGS) -I$(INC_DIR) -c $(SRC_DIR)/map.c -o $(SRC_DIR)/map.o
-
-$(SRC_DIR)/map_size.o: $(SRC_DIR)/map_size.c
-	$(CC) $(CFLAGS) -I$(INC_DIR) -c $(SRC_DIR)/map_size.c -o $(SRC_DIR)/map_size.o
-
-$(SRC_DIR)/map_parser.o: $(SRC_DIR)/map_parser.c
-	$(CC) $(CFLAGS) -I$(INC_DIR) -c $(SRC_DIR)/map_parser.c -o $(SRC_DIR)/map_parser.o
-
-$(SRC_DIR)/key_hook.o: $(SRC_DIR)/key_hook.c
-	$(CC) $(CFLAGS) -I$(INC_DIR) -c $(SRC_DIR)/key_hook.c -o $(SRC_DIR)/key_hook.o
-
-$(SRC_DIR)/init.o: $(SRC_DIR)/init.c
-	$(CC) $(CFLAGS) -I$(INC_DIR) -c $(SRC_DIR)/init.c -o $(SRC_DIR)/init.o
-
-$(SRC_DIR)/image.o: $(SRC_DIR)/image.c
-	$(CC) $(CFLAGS) -I$(INC_DIR) -c $(SRC_DIR)/image.c -o $(SRC_DIR)/image.o
-
-$(LIB_DIR)/ft_calloc.o: $(LIB_DIR)/ft_calloc.c
-	$(CC) $(CFLAGS) -I$(INC_DIR) -c $(LIB_DIR)/ft_calloc.c -o $(LIB_DIR)/ft_calloc.o
-
-$(LIB_DIR)/ft_strlcpy.o: $(LIB_DIR)/ft_strlcpy.c
-	$(CC) $(CFLAGS) -I$(INC_DIR) -c $(LIB_DIR)/ft_strlcpy.c -o $(LIB_DIR)/ft_strlcpy.o
-
-$(LIB_DIR)/ft_putstr_fd.o: $(LIB_DIR)/ft_putstr_fd.c
-	$(CC) $(CFLAGS) -I$(INC_DIR) -c $(LIB_DIR)/ft_putstr_fd.c -o $(LIB_DIR)/ft_putstr_fd.o
-
-$(LIB_DIR)/ft_strlen.o: $(LIB_DIR)/ft_strlen.c
-	$(CC) $(CFLAGS) -I$(INC_DIR) -c $(LIB_DIR)/ft_strlen.c -o $(LIB_DIR)/ft_strlen.o
-
-$(LIB_DIR)/ft_strncmp.o: $(LIB_DIR)/ft_strncmp.c
-	$(CC) $(CFLAGS) -I$(INC_DIR) -c $(LIB_DIR)/ft_strncmp.c -o $(LIB_DIR)/ft_strncmp.o
-
-$(LIB_DIR)/ft_strrchr.o: $(LIB_DIR)/ft_strrchr.c
-	$(CC) $(CFLAGS) -I$(INC_DIR) -c $(LIB_DIR)/ft_strrchr.c -o $(LIB_DIR)/ft_strrchr.o
-
-$(GNL_DIR)/get_next_line.o: $(GNL_DIR)/get_next_line.c
-	$(CC) $(CFLAGS) -I$(INC_DIR) -c $(GNL_DIR)/get_next_line.c -o $(GNL_DIR)/get_next_line.o
-
-$(GNL_DIR)/get_next_line_utils.o: $(GNL_DIR)/get_next_line_utils.c
-	$(CC) $(CFLAGS) -I$(INC_DIR) -c $(GNL_DIR)/get_next_line_utils.c -o $(GNL_DIR)/get_next_line_utils.o
+	$(CC) $(CFLAGS) -I${INC_DIR} -o $(NAME) $(OBJ) ${PRINTF_LIB} $(MLX)
 
 clean:
 	make clean -C ./external/ft_printf

@@ -6,16 +6,17 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 20:04:52 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/02/09 11:48:02 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/02/27 16:49:43 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-# include "libft.h"
+# include "error.h"
+# include "../external/libft/libft.h"
+# include "../external/get_next_line/get_next_line.h"
+# include "../external/ft_printf/ft_printf.h"
 # include "../external/mlx/mlx.h"
-# include "get_next_line.h"
-# include "ft_printf.h"
 
 typedef struct s_map
 {
@@ -33,9 +34,11 @@ typedef struct s_image
 {
 	int		img_width;
 	int		img_height;
+	void	*xpm;
 	void	*wall;
 	void	*floor;
 	void	*exit;
+	void	*exit_open;
 	void	*exit_player;
 	void	*collectible;
 	void	*player_up;
@@ -64,29 +67,26 @@ typedef struct s_data
 	t_entity	entity;
 }	t_data;
 
-void	parse_keys(t_data *data);
-int		parse_collectibles(t_data *data);
-void	fill_background(t_data *data);
-int		check_valid_path(t_data *data);
-int		free_all(t_data *data);
-void	free_copy_map(t_data *data);
-int		count_map_file(const char *map_path, int (*f)(int*, char*));
-int		count_width(int *counter, char *line);
-int		count_height(int *counter, char *line);
-int		init_map(t_data *data, char *map_path);
-int		init_window(t_data *data);
-int		init_textures(t_data *data);
-int		init_entities(t_data *data);
-void	check_collectible(t_data *data, int x, int y);
+int		game_destroy(t_data *data);
+int		game_won(t_data *data);
+int		game_exit(t_data *data);
+void	register_input_hooks(t_data *data);
+int		entity_load(t_data *data);
+int		collectible_load(t_data *data);
+void	collecitble_check(t_data *data, int x, int y);
+int		load_map(t_data *data, const char *map_path);
+int		validate_map(t_data *data, char *map_path);
+int		can_play_map(t_data *data);
+int		get_map_size(const char *map_path, int (*f)(int*, char*));
+int		get_map_width(int *counter, char *line);
+int		get_map_height(int *counter, char *line);
+int		load_textures(t_data *data);
+void	apply_wall_and_floor_textures(t_data *data);
+int		init(t_data *data, char *path);
 void	move_up(t_data *data);
 void	move_down(t_data *data);
 void	move_right(t_data *data);
 void	move_left(t_data *data);
-int		check_map(t_data *data);
-int		check_file_valid_path(char *map_path);
-int		parse_map_textures(t_data *data);
-int		parse_player_textures(t_data *data);
-int		parse_extra_textures(t_data *data);
-int		parse_map(t_data *data, const char *map_path);
+int		free_all(t_data *data);
 
 #endif

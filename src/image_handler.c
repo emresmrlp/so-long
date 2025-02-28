@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   image_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/07 20:03:14 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/02/22 20:04:54 by ysumeral         ###   ########.fr       */
+/*   Created: 2025/02/07 19:24:29 by ysumeral          #+#    #+#             */
+/*   Updated: 2025/02/27 19:13:32 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/so_long.h"
 
-int	ft_strlcpy(char *dest, const char *src, int dstsize)
+void	apply_wall_and_floor_textures(t_data *data)
 {
-	int	i;
-	int	srcsize;
+	int	y;
+	int	x;
 
-	srcsize = ft_strlen(src);
-	i = 0;
-	if (dstsize != 0)
+	y = 0;
+	while (data->map.map[y] != NULL)
 	{
-		while (dstsize - 1 > i && src[i] != '\0')
+		x = 0;
+		while (data->map.map[y][x] != '\0')
 		{
-			dest[i] = src[i];
-			i++;
+			if (data->map.map[y][x] == '1')
+				mlx_put_image_to_window(data->mlx, data->win,
+					data->image.wall, x * 64, y * 64);
+			else
+				mlx_put_image_to_window(data->mlx, data->win,
+					data->image.floor, x * 64, y * 64);
+			x++;
 		}
-		dest[i] = '\0';
+		y++;
 	}
-	return (srcsize);
 }

@@ -6,11 +6,11 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/11 22:39:11 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/01/31 19:03:31 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/02/22 20:04:32 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/libft.h"
+#include "libft.h"
 
 int	ft_strlen(const char *s)
 {

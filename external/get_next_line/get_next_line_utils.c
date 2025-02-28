@@ -6,11 +6,11 @@
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/23 21:01:42 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/01/30 20:03:07 by ysumeral         ###   ########.fr       */
+/*   Updated: 2025/02/22 20:06:41 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../include/get_next_line.h"
+#include "get_next_line.h"
 
 char	*ft_strchr(char *str, int c)
 {

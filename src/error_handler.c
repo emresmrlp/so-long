@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   error_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ysumeral <ysumeral@student.42istanbul.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/10 16:02:41 by ysumeral          #+#    #+#             */
-/*   Updated: 2025/02/22 20:04:29 by ysumeral         ###   ########.fr       */
+/*   Created: 2025/02/07 19:59:46 by ysumeral          #+#    #+#             */
+/*   Updated: 2025/02/27 19:13:42 by ysumeral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../include/so_long.h"
 
-int	ft_strncmp(const char *s1, const char *s2, int n)
+int	error_handler(char *error)
 {
-	int	i;
-
-	i = 0;
-	if (n == 0)
-		return (0);
-	while (i < n)
+	if (error)
 	{
-		if (s1[i] != s2[i])
-			return ((unsigned char)s1[i] - (unsigned char)s2[i]);
-		if (s1[i] == '\0' || s2[i] == '\0')
-			break ;
-		i++;
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd(error, 2);
 	}
-	return (0);
+	return (1);
 }

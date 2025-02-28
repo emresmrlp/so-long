@@ -3,7 +3,7 @@
 - This 2D game has been developed using the minilibx library, where the goal is to collect all the points, avoid enemies.
 
 ```
-./so_long ./maps/istanbul.ber
+./so_long ./maps/42istanbul.ber
 ```
 
 ![image](https://github.com/user-attachments/assets/0f91fc3a-1ec3-4431-9741-aaa50a12e8e5)
